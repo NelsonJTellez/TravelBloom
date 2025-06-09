@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css/style.css">
+    <title>TravelBloom - Recomendaciones de Viajes</title>
+   
+</head>
+<body>
+    <header>
+        <nav>
+            <div class="logo">TravelBloom</div>
+            <ul class="nav-links" id="navLinks">
+                <li><a href="#" onclick="showPage('inicio')" tabindex="0">Inicio</a></li>
+                <li><a href="#" onclick="showPage('sobre-nosotros')" tabindex="0">Sobre nosotros</a></li>
+                <li><a href="#" onclick="showPage('contacto')" tabindex="0">Contacto</a></li>
+            </ul>
+            <div class="hamburger" id="hamburger" onclick="toggleMobileMenu()" tabindex="0" role="button" aria-label="Menú">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </nav>
+    </header>
+
+    <main>
+        
+        <div id="inicio" class="page active">
+            <div class="container">
+                <section class="hero">
+                    <h1>Descubre tu próximo destino</h1>
+                    <p>Encuentra los mejores lugares para viajar con nuestras recomendaciones personalizadas</p>
+                </section>
+
+                <section class="filter-container">
+                    <button class="filter-btn active" onclick="filterRecommendations('todos')" tabindex="0">Todos</button>
+                    <button class="filter-btn" onclick="filterRecommendations('playa')" tabindex="0">Playas</button>
+                    <button class="filter-btn" onclick="filterRecommendations('templo')" tabindex="0">Templos</button>
+                    <button class="filter-btn" onclick="filterRecommendations('pais')" tabindex="0">Países</button>
+                </section>
+
+                <section class="recommendations-grid" id="recommendationsGrid">
+                    
+                </section>
+            </div>
+        </div>
+
+        
+        <div id="sobre-nosotros" class="page">
+            <div class="container">
+                <section class="about-section">
+                    <div class="about-intro">
+                        <h2>Quiénes Somos</h2>
+                        <p>Somos un equipo apasionado por los viajes que se dedica a ayudar a exploradores como tú a descubrir destinos increíbles alrededor del mundo. Nuestra misión es inspirar y facilitar experiencias de viaje únicas y memorables.</p>
+                    </div>
+
+                    <div class="team-container">
+                        <div class="team-member">
+                            <div class="team-avatar">👨‍💼</div>
+                            <h3>Carlos Rodríguez</h3>
+                            <p>Fundador y CEO</p>
+                            <p>Viajero experimentado con más de 50 países visitados</p>
+                        </div>
+                        <div class="team-member">
+                            <div class="team-avatar">👩‍💻</div>
+                            <h3>Ana García</h3>
+                            <p>Directora de Contenido</p>
+                            <p>Experta en destinos culturales y experiencias auténticas</p>
+                        </div>
+                        <div class="team-member">
+                            <div class="team-avatar">👨‍🎨</div>
+                            <h3>Miguel Torres</h3>
+                            <p>Diseñador UX</p>
+                            <p>Especialista en crear experiencias digitales memorables</p>
+                        </div>
+                    </div>
+
+                    <div class="values-container">
+                        <div class="value-item">
+                            <div class="value-icon">⚡️</div>
+                            <h3>Personalización</h3>
+                            <p>Adaptamos nuestras recomendaciones a tus gustos y preferencias únicas</p>
+                        </div>
+                        <div class="value-item">
+                            <div class="value-icon">🌍</div>
+                            <h3>Global</h3>
+                            <p>Cubrimos destinos en todos los continentes para ampliar tus horizontes</p>
+                        </div>
+                        <div class="value-item">
+                            <div class="value-icon">🤝</div>
+                            <h3>Confianza</h3>
+                            <p>Información verificada y recomendaciones basadas en experiencias reales</p>
+                        </div>
+                    </div>
+                </section>
+            </div>
+        </div>
+
+        
+        <div id="contacto" class="page">
+            <div class="container">
+                <div class="contact-container">
+                    <h2 style="text-align: center; margin-bottom: 2rem; color: var(--secondary-color);">Contáctanos</h2>
+                    <p style="text-align: center; margin-bottom: 2rem; color: var(--accent-color);">¿Tienes alguna pregunta o sugerencia? Nos encantaría escucharte.</p>
+                    
+                    <form class="contact-form" id="contactForm" onsubmit="handleFormSubmit(event)">
+                        <div class="form-group">
+                            <label for="firstName">Nombre *</label>
+                            <input type="text" id="firstName" name="firstName" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="lastName">Apellido</label>
+                            <input type="text" id="lastName" name="lastName">
+                        </div>
+                        <div class="form-group full-width">
+                            <label for="email">Correo Electrónico *</label>
+                            <input type="email" id="email" name="email" required>
+                        </div>
+                        <div class="form-group full-width">
+                            <label for="subject">Asunto</label>
+                            <input type="text" id="subject" name="subject">
+                        </div>
+                        <div class="form-group full-width">
+                            <label for="message">Mensaje *</label>
+                            <textarea id="message" name="message" required placeholder="Cuéntanos cómo podemos ayudarte..."></textarea>
+                        </div>
+                        <div class="form-group full-width">
+                            <button type="submit" class="submit-btn" id="submitBtn">
+                                <span class="spinner" id="spinner"></span>
+                                <span id="btnText">Enviar Mensaje</span>
+                            </button>
+                        </div>
+                    </form>
+                    <div id="formMessage" class="message"></div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <script src="index.js"></script>
+
+    <footer>
+        <p>&copy; 2025 TravelBloom. Todos los derechos reservados.</p>
+    </footer>
+
+
+</body>
+</html>
